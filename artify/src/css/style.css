@@ -1,0 +1,407 @@
+/* Global Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Global CSS */
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Section */
+#main header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 50px 20px 50px;
+}
+
+#main header h1 {
+  cursor: pointer;
+  font-size: 40px;
+}
+
+/* Header Navbar */
+#main header .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+}
+
+.navbar_item {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar_item::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width .3s;
+}
+
+.navbar_item:hover::after {
+  width: 100%;
+}
+
+/* Header Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: #000;
+  margin: 4px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Media query to show the hamburger menu and navbar on smaller screens */
+@media screen and (max-width: 768px) {
+  #main header .navbar {
+    display: none;
+  }
+
+  .hamburger-menu {
+    margin-top: 50px;
+    display: flex;
+  }
+
+  #main header .navbar.active {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    margin-top: 100px;
+    right: 0px;
+    width: 75%;
+    height: 75%;
+    text-align: right;
+    z-index: 1;
+  }
+
+  .navbar_item {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0px;
+  }
+
+  /* Style the hamburger menu icon when active */
+  #main header .hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  #main header .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #main header .hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  #main header .hamburger-menu {
+    display: block;
+  }
+}
+
+/* Favourites Tab in Navbar*/
+#favourites {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#favourites:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Art Cards */
+#artworks {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 50px;
+}
+
+.artwork-card {
+  background-color: #fff;
+  border: 2px solid#000;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.artwork-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.artwork-image {
+  position: relative;
+  padding-bottom: 75%;
+}
+
+.artwork-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.like-button {
+  position: absolute;
+  top: 200px;
+  right: 0px;
+  bottom: 0px;
+  left: 300px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Media Query to postion Like button on smaller screens */
+
+@media (max-width: 768px) {
+  .like-button {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+}
+
+/* Popup container */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Popup content */
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 30px;
+}
+
+/* Apply column layout for Popup content on mobile screens */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    /* padding-top: 50px; */
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    height: 70%;
+    width: 70%;
+    overflow-x: hidden;
+  }
+}
+
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  right: 250px;
+  top: 190px;
+}
+
+.close:hover {
+  color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .close {
+    position: relative;
+    left: 150px;
+    top: 0px;
+  }
+}
+
+.modal img {
+  object-fit: cover;
+  max-width: 30%;
+  border-radius: 10px;
+}
+
+/* Media Query to Position Popup Image on smaller screens */
+
+@media screen and (max-width: 768px) {
+  .modal img {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+/* Popup details */
+.modal-content .popup-details {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* No favorites popup */
+#noFavoritesPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+#noFavoritesPopup .noFavoritesContent {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 30px;
+}
+
+#noFavoritesPopup .close {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 200px;
+  right: 250px;
+}
+
+#noFavoritesPopup .close:hover {
+  color: #000;
+}
+
+/* Media Query to position close icon on smaller screens */
+@media screen and (max-width: 768px) {
+  #noFavoritesPopup .close {
+    top: 77px;
+    left: 387px;
+  }
+}
+
+/* HEART ICON */
+.heart-icon {
+  background-color: white;
+  display: inline-block;
+  height: 15px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 15px;
+}
+
+.heart-icon:before,
+.heart-icon:after {
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  height: 15px;
+  position: absolute;
+  width: 15px;
+}
+
+.heart-icon:before {
+  top: -7px;
+  left: 0;
+}
+
+.heart-icon:after {
+  left: 7px;
+  top: 0;
+}
+
+.heart-icon.filled {
+  background-color: red;
+  border-color: red;
+}
+
+.heart-icon.filled:before,
+.heart-icon.filled:after {
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  position: absolute;
+  width: 15px;
+}
+
+.heart-icon.filled:before {
+  top: -7px;
+  left: 0;
+}
+
+.heart-icon.filled:after {
+  left: 7px;
+  top: 0;
+}
+
+.like-button {
+  border: transparent;
+}
+
+/* Footer */
+
+.footer {
+  background: linear-gradient(to right, #fff, #000);
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  font-size: 14px;
+}

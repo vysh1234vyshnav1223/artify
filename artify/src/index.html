@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artify</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="main">
+    <!-- Header Section Start-->
+    <header>
+      <h1 id="artify-title">Artify</h1>
+      <div class="navbar">
+        <h3 class="navbar_item" data-category="Modern Art">Modern Art</h3>
+        <h3 class="navbar_item" data-category="Sculptures">Sculptures</h3>
+        <h3 class="navbar_item" data-category="Cubism">Cubism</h3>
+        <h3 class="navbar_item" data-category="Abstract Art">Abstract Art</h3>
+        <button id="favourites">Favourites</button>
+      </div>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </header>
+    <!-- Header Section Ends-->
+
+    <!-- Artwork Cards Section Start-->
+    <div id="artworks"></div>
+    <!-- Artwork Cards Section Ends-->
+
+    <!-- Artwork Popup info Start-->
+    <div id="artPopup" class="modal">
+      <h2></h2>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="" alt="" />
+        <div class="popup-details">
+          <h2></h2>
+          <p class="description"></p>
+          <p class="keywords"></p>
+          <p class="Artist"></p>
+        </div>
+      </div>
+    </div>
+    <!-- Artwork Popup info Ends-->
+    <!-- No Favorties Start-->
+    <div id="noFavoritesPopup" class="modal">
+      <div class="noFavoritesContent">
+        <p>No favorite artworks found. Start liking artworks to add them to your favorites.</p>
+        <span class="close">&times;</span>
+      </div>
+    </div>
+    <!-- No Favorties End-->
+    <!-- Footer section Start-->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2023 Artify. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- Footer section Ends-->
+  </div>
+  <script type="module" src="js/index.js"></script>
+</body>
+
+</html>
