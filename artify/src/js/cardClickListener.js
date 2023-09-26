@@ -2,10 +2,10 @@ import { populatePopup, openPopup } from "./cardPopup";
 import favoritesTab from "./favorites";
 import { displayLikedArtworks, initializeLikedArtworks } from "./imageDisplayer";
 
-
+// Initialize the liked artworks from local storage
 let likedArtworks = initializeLikedArtworks();
 
-//Function that handles like when clicked on the heart icon and adds it to the favorites tab, also to local storage
+// Function that handles like when clicked on the heart icon and adds it to the favorites tab, also to local storage
 export function addCardClickListeners(photos) {
     const cardElements = document.querySelectorAll('.artwork-card');
 
@@ -35,13 +35,13 @@ export function addCardClickListeners(photos) {
                     heartIcon.classList.add('filled');
                 }
 
-                isLiked = !isLiked; // Toggle the liked status
+                isLiked = !isLiked; 
+                likedArtworks = initializeLikedArtworks();
             } else {
                 // Clicking elsewhere on the card, open the popup
                 const clickedPhoto = photos[index];
                 populatePopup(clickedPhoto.alt_description, clickedPhoto.urls.small, clickedPhoto.description, clickedPhoto.tags, clickedPhoto.user);
                 openPopup();
-                console.log(clickedPhoto);
             }
         });
     });
